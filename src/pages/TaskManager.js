@@ -44,7 +44,7 @@ const TaskManager = () => {
     const fetchTasks = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`http://13.60.174.239:3001/api/tasks/event/${eventId}`);
+        const res = await axios.get(`http://13.60.43.21:3001/api/tasks/event/${eventId}`);
         setTasks(res.data);
       } catch (err) {
         console.error('Failed to fetch tasks:', err);
@@ -56,7 +56,7 @@ const TaskManager = () => {
 
     const fetchParticipants = async () => {
       try {
-        const res = await axios.get(`http://13.60.174.239:3001/api/events/${eventId}`);
+        const res = await axios.get(`http://13.60.43.21:3001/api/events/${eventId}`);
         setParticipants(res.data.participants || []);
       } catch (err) {
         console.error('Failed to fetch participants:', err);
@@ -95,12 +95,12 @@ const TaskManager = () => {
     }
 
     try {
-      await axios.post('http://13.60.174.239:3001/api/tasks', {
+      await axios.post('http://13.60.43.21:3001/api/tasks', {
         event: eventId,
         ...form,
       });
       // Refresh tasks after adding
-      const res = await axios.get(`http://13.60.174.239:3001/api/tasks/event/${eventId}`);
+      const res = await axios.get(`http://13.60.43.21:3001/api/tasks/event/${eventId}`);
       setTasks(res.data);
       setOpen(false);
     } catch (err) {

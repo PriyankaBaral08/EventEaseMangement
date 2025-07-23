@@ -25,7 +25,7 @@ const Expenses = () => {
   const fetchExpenses = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://13.60.174.239:3001/api/expenses/event/${eventId}`);
+      const res = await axios.get(`http://13.60.43.21:3001/api/expenses/event/${eventId}`);
       setExpenses(res.data);
     } catch (err) {
       console.error(err);
@@ -35,7 +35,7 @@ const Expenses = () => {
   };
 const fetchParticipants = async () => {
   try {
-    const res = await axios.get(`http://13.60.174.239:3001/api/events/${eventId}`);
+    const res = await axios.get(`http://13.60.43.21:3001/api/events/${eventId}`);
     const event = res.data;
 
     // Combine organizer and participants
@@ -86,7 +86,7 @@ const fetchParticipants = async () => {
     }
 
     try {
-      await axios.post('http://13.60.174.239:3001/api/expenses', { ...form, event: eventId, splitBetween });
+      await axios.post('13.60.43.21:3001/api/expenses', { ...form, event: eventId, splitBetween });
       fetchExpenses();
       handleClose();
     } catch (err) {

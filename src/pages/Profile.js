@@ -48,7 +48,7 @@ const Profile = () => {
     formData.append('image', image);
 
     try {
-      const res = await axios.post('http://13.60.174.239:3001/api/upload', formData, {
+      const res = await axios.post('http://13.60.43.21:3001/api/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 

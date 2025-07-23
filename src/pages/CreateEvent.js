@@ -40,7 +40,7 @@ const CreateEvent = () => {
     }
 
     try {
-      await axios.post('http://13.60.174.239:3001/api/events', formData);
+      await axios.post('http://13.60.43.21:3001/api/events', formData);
       navigate('/events');
     } catch (err) {
       setError(err.response?.data?.message || 'Error creating event');

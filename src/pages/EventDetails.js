@@ -30,7 +30,7 @@ const EventDetails = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(`http://13.60.174.239:3001/api/events/${id}`)
+    axios.get(`http://13.60.43.21:3001/api/events/${id}`)
       .then(res => {
         setEvent(res.data);
         setLoading(false);
@@ -44,7 +44,7 @@ const EventDetails = () => {
 
   const handleJoin = async () => {
     try {
-      const res = await axios.post(`http://13.60.174.239:3001/api/events/${id}/join`);
+      const res = await axios.post(`http://13.60.43.21:3001/api/events/${id}/join`);
       setEvent(res.data.event);
       setMessage(res.data.message);
       setError('');
