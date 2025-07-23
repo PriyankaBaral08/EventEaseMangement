@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get('http://13.60.174.239:3001/api/auth/profile');
+      const response = await axios.get('http://13.60.43.21:3001/api/auth/profile');
       dispatch({ type: 'SET_USER', payload: response.data });
     } catch (error) {
       localStorage.removeItem('token');
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
-      const response = await axios.post('http://13.60.174.239:3001/api/auth/login', { email, password });
+      const response = await axios.post('http://13.60.43.21:3001/api/auth/login', { email, password });
       const { token, user } = response.data;
       
       localStorage.setItem('token', token);
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
-      const response = await axios.post('http://13.60.174.239:3001/api/auth/register', userData);
+      const response = await axios.post('http://13.60.43.21:3001/api/auth/register', userData);
       const { token, user } = response.data;
       
       localStorage.setItem('token', token);
