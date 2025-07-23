@@ -42,8 +42,8 @@ const Dashboard = () => {
   const fetchDashboardData = async () => {
     try {
       const [eventsResponse, expenseResponse] = await Promise.all([
-        axios.get('/api/events'),
-        axios.get('/api/expenses/total') // Fetch total expenses from backend
+        axios.get('http://13.60.174.239:3001/api/events'),
+        axios.get('http://13.60.174.239:3001/api/expenses/total') // Fetch total expenses from backend
       ]);
 
       const eventsData = eventsResponse.data;

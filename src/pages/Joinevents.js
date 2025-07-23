@@ -24,7 +24,7 @@ const JoinEvent = () => {
   const fetchEvent = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`/api/events/${eventId}`);
+      const res = await axios.get(`http://13.60.174.239:3001/api/events/${eventId}`);
       setEvent(res.data);
     } catch (err) {
       setError('Failed to load event');
@@ -40,7 +40,7 @@ const JoinEvent = () => {
 
   const handleJoin = async () => {
     try {
-      const res = await axios.post(`/api/events/${eventId}/join`);
+      const res = await axios.post(`http://13.60.174.239:3001/api/events/${eventId}/join`);
       setJoinStatus('You have successfully joined the event!');
       setEvent(res.data.event); // optionally update UI
     } catch (err) {

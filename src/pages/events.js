@@ -39,7 +39,7 @@ const Events = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('/api/events')
+    axios.get('http://13.60.174.239:3001/api/events')
       .then(res => setEvents(res.data))
       .catch(err => console.error(err));
   }, []);

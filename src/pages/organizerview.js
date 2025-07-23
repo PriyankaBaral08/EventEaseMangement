@@ -62,7 +62,7 @@ const OrganizerView = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const res = await axios.get(`/api/events/${eventId}`);
+                const res = await axios.get(`http://13.60.174.239:3000/api/events/${eventId}`);
                 setEvent(res.data);
                 setEditForm({
                     title: res.data.title,
@@ -84,7 +84,7 @@ const OrganizerView = () => {
     const fetchTasks = async () => {
         setLoadingTasks(true);
         try {
-            const res = await axios.get(`/api/tasks/event/${eventId}`);
+            const res = await axios.get(`http://13.60.174.239:3000/api/tasks/event/${eventId}`);
             setTasks(res.data);
         } catch (err) {
             console.error('Failed to fetch tasks');
@@ -101,7 +101,7 @@ const OrganizerView = () => {
     const handleSaveEvent = async () => {
         setError('');
         try {
-            await axios.put(`/api/events/${eventId}`, editForm);
+            await axios.put(`http://13.60.174.239:3000/api/events/${eventId}`, editForm);
             alert('Event updated successfully!');
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to update event');
@@ -112,10 +112,10 @@ const OrganizerView = () => {
         if (!newParticipantEmail.trim()) return;
         setError('');
         try {
-            await axios.post(`/api/events/${eventId}/participants`, {
+            await axios.post(`http://13.60.174.239:3000/api/events/${eventId}/participants`, {
                 email: newParticipantEmail.trim()
             });
-            const res = await axios.get(`/api/events/${eventId}`);
+            const res = await axios.get(`http://13.60.174.239:3000/api/events/${eventId}`);
             setParticipants(res.data.participants);
             setNewParticipantEmail('');
         } catch (err) {
@@ -126,8 +126,8 @@ const OrganizerView = () => {
     const handleRemoveParticipant = async (userId) => {
         setError('');
         try {
-            await axios.delete(`/api/events/${eventId}/participants/${userId}`);
-            const res = await axios.get(`/api/events/${eventId}`);
+            await axios.delete(`http://13.60.174.239:3000/api/events/${eventId}/participants/${userId}`);
+            const res = await axios.get(`http://13.60.174.239:3000/api/events/${eventId}`);
             setParticipants(res.data.participants);
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to remove participant');
@@ -146,7 +146,7 @@ const OrganizerView = () => {
         }
         setError('');
         try {
-            await axios.post('/api/tasks', {
+            await axios.post('http://13.60.174.239:3001/api/tasks', {
                 ...taskForm,
                 event: eventId
             });
